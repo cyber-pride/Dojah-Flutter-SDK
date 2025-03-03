@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -169,6 +171,7 @@ class _WebviewScreenState extends State<WebviewScreen> {
           ? InAppWebView(
               key: webViewKey,
               initialSettings: options,
+              gestureRecognizers: {Factory(() => EagerGestureRecognizer())},
               initialData: InAppWebViewInitialData(
                 baseUrl: WebUri("https://widget.dojah.io"),
                 historyUrl: WebUri("https://widget.dojah.io"),
